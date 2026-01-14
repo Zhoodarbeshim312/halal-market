@@ -1,0 +1,19 @@
+.TopBar {
+  padding: 20px 0;
+  border-bottom: 2px solid #dde1e6;
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+      color: #0a8791;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    button {
+      color: #0a8791;
+      font-size: 18px;
+      background: none;
+    }
+  }
+}
