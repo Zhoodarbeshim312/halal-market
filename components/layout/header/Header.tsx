@@ -3,6 +3,8 @@ import { FC, useState } from "react";
 import scss from "./Header.module.scss";
 import { IoIosSearch } from "react-icons/io";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 const Header: FC = () => {
   const [open, setOpen] = useState(false);
@@ -15,6 +17,7 @@ const Header: FC = () => {
     "Сладости",
     "Напитки",
   ];
+  const nav = useRouter();
 
   return (
     <>
@@ -24,7 +27,9 @@ const Header: FC = () => {
             <div className={scss.logo}>HALAL industry</div>
             <div className={scss.topActions}>
               <button className={scss.beSeller}>Стать продавцом</button>
-              <button className={scss.login}>Войти</button>
+              <button onClick={() => nav.push("/login")} className={scss.login}>
+                Войти
+              </button>
             </div>
           </div>
         </div>
