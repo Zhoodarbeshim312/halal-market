@@ -2,10 +2,12 @@
 import { FC, useState } from "react";
 import scss from "./Header.module.scss";
 import { IoIosSearch } from "react-icons/io";
+import Link from "next/link";
 
 const Header: FC = () => {
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState("Все категории");
+
   const categories = [
     "Все категории",
     "Мясо",
@@ -30,10 +32,12 @@ const Header: FC = () => {
       <header className={scss.bottomHeader}>
         <div className="container">
           <div className={scss.bottomInner}>
-            <button className={scss.menuBtn}>
-              <span className={scss.menuIcon}></span>
-              Меню
-            </button>
+            <Link href="/menu">
+              <button className={scss.menuBtn}>
+                <span className={scss.menuIcon}></span>
+                Меню
+              </button>
+            </Link>
             <div className={scss.searchBox}>
               <div className={scss.searchInput}>
                 <IoIosSearch size={18} />

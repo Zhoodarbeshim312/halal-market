@@ -1,0 +1,94 @@
+#Vitamin {
+  padding-block: 40px;
+  .content {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 50px;
+    .vitamin_text {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      p:nth-child(1) {
+        color: #0a8791;
+        font-weight: 500;
+        font-size: 20px;
+      }
+      p:nth-child(2) {
+        color: #fdc818;
+        font-weight: 500;
+        font-size: 20px;
+      }
+    }
+    .cards {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 55px;
+      flex-wrap: wrap;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 250px;
+      height: 100%;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      -webkit-box-shadow: 0px 0px 7px -2px rgba(34, 60, 80, 1);
+      -moz-box-shadow: 0px 0px 7px -2px rgba(34, 60, 80, 1);
+      box-shadow: 0px 0px 7px -2px rgba(34, 60, 80, 1);
+      .heart_icon {
+        position: absolute;
+        top: 13px;
+        right: 10px;
+        font-size: 24px;
+      }
+      .items {
+        padding: 45px 10px 10px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        p {
+          color: #6cc51d;
+          font-weight: 500;
+          font-size: 22px;
+        }
+        .item_name {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          p:nth-child(1) {
+            color: #3e3e3e;
+            font-weight: 500;
+            font-size: 20px;
+          }
+          p:nth-child(2) {
+            color: #a1a1a1;
+            font-weight: 500;
+            font-size: 14px;
+          }
+        }
+      }
+      button {
+        width: 100%;
+        padding: 16px 10px;
+        background: linear-gradient(50deg, #0a8791, #0ac3d1);
+        color: white;
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        .cart_icon {
+          color: white;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

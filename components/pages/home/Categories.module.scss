@@ -1,0 +1,31 @@
+#Categories {
+  padding: 30px;
+  .content {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 35px;
+    p {
+      font-weight: 500;
+      font-size: 20px;
+      color: #0a8791;
+    }
+    .all_category {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      button {
+        .vitamin_image {
+          position: relative;
+        }
+      }
+      .milks_image {
+        width: 150px;
+        height: 146px;
+        border-radius: 15px;
+        border: 0.5px rgba(0, 0, 0, 0.21) solid;
+      }
+    }
+  }
+}
