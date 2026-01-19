@@ -46,7 +46,7 @@ const SideBar: FC = () => {
                 />
                 Рабочий стол
               </Link>
-              <Link href={"/admin"}>
+              <Link href={"/sellers"}>
                 <LuUsers
                   style={{
                     display: "flex",
@@ -58,7 +58,7 @@ const SideBar: FC = () => {
                 />
                 Продавцы
               </Link>
-              <Link href={"/admin"}>
+              <Link href={"/products"}>
                 <AiOutlineProduct
                   style={{
                     display: "flex",
@@ -70,7 +70,7 @@ const SideBar: FC = () => {
                 />
                 Товары
               </Link>
-              <Link href={"/admin"}>
+              <Link href={"/analytics"}>
                 <TbBrandGoogleAnalytics
                   style={{
                     display: "flex",
