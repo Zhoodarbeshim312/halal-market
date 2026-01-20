@@ -6,7 +6,7 @@ import { GrGallery } from "react-icons/gr";
 const CategoryPage = () => {
   const { category } = useParams();
   const route = useRouter();
-  const categories = [
+const categories = [
     {
       image: <GrGallery />,
       name: "Мясо и мясные продукты",
