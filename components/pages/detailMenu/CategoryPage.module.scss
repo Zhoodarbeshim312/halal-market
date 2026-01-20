@@ -1,4 +1,4 @@
-#MenuPage {
+#CategoryPage {
   padding: 40px 0px 100px 0px;
   .content {
     h1 {
@@ -6,6 +6,12 @@
       font-weight: 500;
       font-style: Medium;
       font-size: 32px;
+      span {
+        color: #0a8791;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 25px;
+      }
     }
     .blocks {
       display: flex;
