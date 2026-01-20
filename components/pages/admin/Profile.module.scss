@@ -1,0 +1,102 @@
+.Profile {
+  padding: 40px 0;
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .profile {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      p {
+        color: #0a8791;
+        font-size: 18px;
+      }
+      .photo {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        .actions {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+
+          a {
+            color: red;
+            font-size: 16px;
+          }
+          .upload {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border: 2px solid #0a8a8a;
+            border-radius: 10px;
+
+            font-size: 18px;
+            font-weight: 500;
+            color: #0a8a8a;
+
+            cursor: pointer;
+            user-select: none;
+            transition: 0.2s ease;
+          }
+
+          .upload:hover {
+            background: rgba(10, 138, 138, 0.08);
+          }
+        }
+      }
+      .line {
+        width: 700px;
+        height: 1px;
+        border: 1px solid #dde1e6;
+      }
+      .headForm {
+        display: flex;
+        flex-direction: column;
+        .form {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+          margin-top: 15px;
+          input {
+            background: #f2f4f8;
+            width: 100%;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 10px;
+          }
+          button {
+            font-size: 18px;
+            background: #0a8791;
+            color: white;
+            padding: 10px 35px;
+            border-radius: 10px;
+          }
+          .block {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            .input {
+              display: flex;
+              flex-direction: column;
+              width: 48%;
+              gap: 10px;
+              input {
+                padding: 10px;
+                font-size: 18px;
+                border-radius: 10px;
+                width: 100%;
+                background: #f2f4f8;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
