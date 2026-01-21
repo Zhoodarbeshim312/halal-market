@@ -1,13 +1,15 @@
 "use client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import scss from "./SubCategory.module.scss";
 import fishes from "@/public/fishes.svg";
 import Image from "next/image";
 import { GrGallery } from "react-icons/gr";
 import { title } from "process";
+import DetailsPage from "./DetailsPage";
 
 const SubCategory = () => {
   const { subcategory } = useParams();
+  const route = useRouter();
 
   const meatProducts = [
     {
@@ -58,10 +60,13 @@ const SubCategory = () => {
           </h1>
           <div className={scss.blocks}>
             {prod.map((item, idx) => (
-              <div key={idx} className={scss.card}>
+              <div
+                key={idx}
+                className={scss.card}
+                onClick={() => route.push(`${`/detail/${item.id}`}`)}
+              >
                 <Image src={fishes} alt="" />
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
+                <p>{item.name}</p>
               </div>
             ))}
           </div>
