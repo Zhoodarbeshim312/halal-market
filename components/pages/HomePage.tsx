@@ -1,7 +1,5 @@
 import Categories from "./home/Categories";
-import SeaFood from "./home/SeaFood";
-import Vitamin from "./home/Vitamin";
-
+import SeaFood from "./home/Products";
 import Welcome from "./home/Welcome";
 
 const HomePage = () => {
@@ -10,7 +8,7 @@ const HomePage = () => {
       <Welcome />
       <Categories />
       <SeaFood />
-      <Vitamin />
+      
     </>
   );
 };

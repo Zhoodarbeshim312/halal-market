@@ -2,71 +2,40 @@
 import { useParams, useRouter } from "next/navigation";
 import scss from "./SubCategory.module.scss";
 import fishes from "@/public/fishes.svg";
+import { useGetProduct } from "@/api/products";
 import Image from "next/image";
-import { GrGallery } from "react-icons/gr";
-import { title } from "process";
-import DetailsPage from "./DetailsPage";
 
 const SubCategory = () => {
   const { subcategory } = useParams();
+  const categoryId = Number(subcategory);
   const route = useRouter();
-
-  const meatProducts = [
-    {
-      id: "1",
-      title: "Мясо и мясные продукты",
-      name: "Говядина (халяль)",
-      description: "Свежая халяльная говядина высокого качества",
-      image: fishes,
-    },
-    {
-      id: "2",
-      name: "Баранина (халяль)",
-      description: "Ароматная халяльная баранина для запекания и тушения",
-      image: fishes,
-    },
-    {
-      id: "3",
-      name: "Курица (халяль)",
-      description: "Свежие халяльные куриные части и целая птица",
-      image: fishes,
-    },
-    {
-      id: "4",
-      name: "Индейка (халяль)",
-      description: "Нежное халяльное мясо индейки для запекания и жарки",
-      image: fishes,
-    },
-    {
-      id: "5",
-      name: "Утиное мясо (халяль)",
-      description: "Нежное халяльное мясо утки для жарки и запекания",
-      image: fishes,
-    },
-  ];
-
-  const name2 = meatProducts.find((item) => item.id === subcategory);
-  const prod = meatProducts.filter((item) => item.id === subcategory);
-
+  const { data } = useGetProduct();
+  console.log(data?.results);
+  const product = data?.results.map((item) =>
+    item.images.map((el) => el.product_image),
+  );
   return (
     <div id={scss.SubCategory}>
       <div className="container">
         <div className={scss.content}>
-          <h1>
-            Меню
-            <span>
-              /{name2?.title}/{name2?.name}
-            </span>
-          </h1>
+          <h1>Меню</h1>
           <div className={scss.blocks}>
-            {prod.map((item, idx) => (
-              <div
-                key={idx}
-                className={scss.card}
-                onClick={() => route.push(`${`/detail/${item.id}`}`)}
-              >
-                <Image src={fishes} alt="" />
-                <p>{item.name}</p>
+            {data?.results.map((item, idx) => (
+              <div key={idx} className={scss.card}>
+                <div className={scss.incard}>
+                  <Image
+                    className={scss.image}
+                    src={item.images[0].product_image}
+                    alt="photo"
+                    width={100}
+                    height={100}
+                  />
+                  <span className={scss.item_name}>
+                    <p>{item.product_name}</p>
+                    <p>{item.price}</p>
+                  </span>
+                </div>
+                <button>Добавить в корзину</button>
               </div>
             ))}
           </div>
