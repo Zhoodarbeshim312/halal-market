@@ -13,12 +13,40 @@ const Categories = () => {
         <div className={scss.content}>
           <p>Все категории</p>
           <div className={scss.all_category}>
-            <Image className={scss.vitamin_image} src={vitamin} alt="" />
-            <Image className={scss.bueaty_image} src={bueaty} alt="" />
-            <Image className={scss.milks_image} src={milks} alt="" />
-            <Image className={scss.fishes_image} src={fishes} alt="" />
-            <Image className={scss.braed_image} src={bread} alt="" />
-            <Image className={scss.meats_image} src={meats} alt="" />
+            <div className={scss.card}>
+              <Image className={scss.vitamin_image} src={vitamin} alt="" />
+              <p>БАД и витамины</p>
+            </div>
+            <div className={scss.card}>
+              <Image className={scss.bueaty_image} src={bueaty} alt="" />
+              <p>Здоровье и красота</p>
+            </div>
+            <div className={scss.card}>
+              <Image
+                className={scss.milks_image}
+                src={milks}
+                alt=""
+                width={150}
+                height={150}
+              />
+              <p>БАД и витамины</p>
+            </div>
+            <div className={scss.card}>
+              <Image className={scss.fishes_image} src={fishes} alt="" />
+              <p>Рыба и морепродукты</p>
+            </div>
+            <div className={scss.card}>
+              <Image className={scss.bread_image} src={bread} alt="" />
+              <p>Мука, хлеб и выпечка</p>
+            </div>
+            <div className={scss.card}>
+              <Image className={scss.meats_image} src={meats} alt="" />
+              <p>Мясо и мясные продукты</p>
+            </div>
+            <div className={scss.card}>
+              <Image className={scss.vitamin_image} src={vitamin} alt="" />
+              <p>БАД и витамины</p>
+            </div>
           </div>
         </div>
       </div>

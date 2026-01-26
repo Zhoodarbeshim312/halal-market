@@ -1,31 +1,80 @@
 #Categories {
-  padding: 30px;
+  padding: 50px;
+
   .content {
     display: flex;
-    align-items: start;
     flex-direction: column;
     gap: 35px;
+
     p {
       font-weight: 500;
       font-size: 20px;
       color: #0a8791;
     }
+
     .all_category {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
       gap: 40px;
-      button {
-        .vitamin_image {
-          position: relative;
+      overflow-x: auto;
+
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .card {
+      position: relative;
+      flex-shrink: 0;
+      cursor: pointer;
+
+      img {
+        border-radius: 16px;
+        transition: transform 0.3s ease;
+        display: block;
+      }
+
+      p {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        color: #0a8791;
+
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.731);
+        margin: 45px 13px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.05);
+        }
+
+        p {
+          opacity: 1;
         }
       }
-      .milks_image {
-        width: 150px;
-        height: 146px;
-        border-radius: 15px;
-        border: 0.5px rgba(0, 0, 0, 0.21) solid;
+
+      &:active p {
+        opacity: 1;
       }
+    }
+
+    .milks_image {
+      width: 150px;
+      height: 146px;
+      border-radius: 15px;
+      border: 0.5px solid rgba(0, 0, 0, 0.21);
     }
   }
 }
