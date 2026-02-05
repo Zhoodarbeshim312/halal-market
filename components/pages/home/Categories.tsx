@@ -1,12 +1,17 @@
+"use client";
 import Image from "next/image";
 import scss from "./Categories.module.scss";
-import vitamin from "@/public/vitamins.svg";
-import bueaty from "@/public/bueaty.svg";
-import milks from "@/public/milks.png";
-import fishes from "@/public/fishes.svg";
-import bread from "@/public/braeds.svg";
-import meats from "@/public/meats.svg";
+import halal from "@/app/favicon.ico";
+import { useParams, useRouter } from "next/navigation";
+import { useGetCategory } from "@/api/categories";
 const Categories = () => {
+  const { category } = useParams();
+  // const categoryId = Number(category);
+  const route = useRouter();
+  const { data } = useGetCategory();
+  // console.log(data);
+
+  // const filteredSubcategories = data?.filter((item) => item.id === categoryId);
   return (
     <div id={scss.Categories}>
       <div className="container">
@@ -14,39 +19,26 @@ const Categories = () => {
           <p>Все категории</p>
           <div className={scss.all_category}>
             <div className={scss.card}>
-              <Image className={scss.vitamin_image} src={vitamin} alt="" />
-              <p>БАД и витамины</p>
-            </div>
-            <div className={scss.card}>
-              <Image className={scss.bueaty_image} src={bueaty} alt="" />
-              <p>Здоровье и красота</p>
-            </div>
-            <div className={scss.card}>
               <Image
-                className={scss.milks_image}
-                src={milks}
+                className={scss.halal}
+                src={halal}
                 alt=""
                 width={150}
                 height={150}
               />
-              <p>БАД и витамины</p>
+              <p>Все категории</p>
             </div>
-            <div className={scss.card}>
-              <Image className={scss.fishes_image} src={fishes} alt="" />
-              <p>Рыба и морепродукты</p>
-            </div>
-            <div className={scss.card}>
-              <Image className={scss.bread_image} src={bread} alt="" />
-              <p>Мука, хлеб и выпечка</p>
-            </div>
-            <div className={scss.card}>
-              <Image className={scss.meats_image} src={meats} alt="" />
-              <p>Мясо и мясные продукты</p>
-            </div>
-            <div className={scss.card}>
-              <Image className={scss.vitamin_image} src={vitamin} alt="" />
-              <p>БАД и витамины</p>
-            </div>
+            {data?.map((item) => (
+              <div key={item.id} className={scss.card}>
+                <Image
+                  src={item.category_image}
+                  width={150}
+                  height={150}
+                  alt={item.category_name}
+                />
+                <p>{item.category_name}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

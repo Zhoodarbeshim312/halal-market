@@ -5,10 +5,13 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: "34.228.55.22",
-        port: "", // если порт не нужен
+        hostname: "54.163.30.23",
         pathname: "/media/**",
-        // domains: ["34.228.55.22"], // сюда добавляем хост твоей картинки
+      },
+      {
+        protocol: "http",
+        hostname: "34.228.55.22",
+        pathname: "/media/**",
       },
     ],
   },
