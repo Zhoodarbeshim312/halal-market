@@ -5,7 +5,7 @@ const useGetCategory = () => {
   return useQuery<Category.resCategory, Category.reqCategory>({
     queryKey: ["category"],
     queryFn: async () => {
-      const respose = await api.get("/categories");
+      const respose = await api.get("/categories/");
       return respose.data;
     },
   });

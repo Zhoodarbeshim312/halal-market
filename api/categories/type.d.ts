@@ -1,15 +1,13 @@
 namespace Category {
-  type reqCategory = {};
-
-  type resCategory = {
-    count: number;
-    next: string | null;
-    previous: string | null;
-    results: Results[];
+  type reqCategory = {
+    // userId: number;
+    // id: number;
+    // title: string;
+    // completed: boolean;
   };
-  type Results = {
-    id: number | string;
+  type resCategory = {
+    id: number;
     category_name: string;
     category_image: string;
-  };
+  }[];
 }

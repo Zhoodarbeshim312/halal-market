@@ -1,9 +1,17 @@
 $main: #0a8791;
-$border: #0a8791;
+$border: #0a889197;
 
 .topHeader {
   background: $main;
   padding: 14px 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: 0.3s ease;
 
   .topInner {
     display: flex;

@@ -14,6 +14,7 @@
 
     .all_category {
       display: flex;
+      align-items: start;
       gap: 40px;
       overflow-x: auto;
 
@@ -26,8 +27,12 @@
     }
 
     .card {
+      border-radius: 15px;
+      border: 1px solid rgba(0, 0, 0, 0.354);
       position: relative;
       flex-shrink: 0;
+      transition: opacity 0.3s ease;
+
       cursor: pointer;
 
       img {
@@ -49,13 +54,15 @@
         color: #0a8791;
 
         border-radius: 16px;
-        background: rgba(255, 255, 255, 0.731);
+        background: rgba(255, 255, 255, 0.95);
         margin: 45px 13px;
         opacity: 0;
         transition: opacity 0.3s ease;
       }
 
       &:hover {
+        border: 1px solid #0a8791;
+
         img {
           transform: scale(1.05);
         }
@@ -71,6 +78,12 @@
     }
 
     .milks_image {
+      width: 150px;
+      height: 146px;
+      border-radius: 15px;
+      border: 0.5px solid rgba(0, 0, 0, 0.21);
+    }
+    .halal {
       width: 150px;
       height: 146px;
       border-radius: 15px;
