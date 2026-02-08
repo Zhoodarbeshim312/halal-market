@@ -9,6 +9,8 @@ import { LuPaperclip } from "react-icons/lu";
 import { FaCamera } from "react-icons/fa";
 import { useParams } from "next/navigation";
 import { useState } from "react";
+import { useGetComent } from "@/api/coment";
+import Comment from "./Comment";
 
 const DetailsPage = () => {
   const [readmore, setReadmore] = useState(false);
@@ -16,6 +18,8 @@ const DetailsPage = () => {
   const { id } = useParams();
 
   const { data: product, isLoading } = useGetById(Number(id));
+  const { data } = useGetComent();
+  console.log(data);
 
   if (isLoading) {
     return <p>loading</p>;
@@ -49,15 +53,13 @@ const DetailsPage = () => {
                   <p>
                     Товар : <span>{product?.action}</span>
                   </p>
-                  <p>
-                    Хороший рейтинг : <span>{product?.good_rate}</span>
-                  </p>
+
                   <p>
                     Ингредиенты:{" "}
                     <span>
                       {readmore
                         ? product?.ingredients
-                        : product?.ingredients.slice(0, 100) + "..."}
+                        : product?.ingredients.slice(0, 70) + "..."}
                       <span
                         className={scss.more}
                         onClick={() => setReadmore(!readmore)}
@@ -72,7 +74,7 @@ const DetailsPage = () => {
                     <span>
                       {readmore
                         ? product?.description
-                        : product?.description.slice(0, 100) + "..."}
+                        : product?.description.slice(0, 70) + "..."}
                       <span
                         className={scss.more}
                         onClick={() => setReadmore(!readmore)}
@@ -81,6 +83,7 @@ const DetailsPage = () => {
                       </span>
                     </span>
                   </p>
+
                   <div className={scss.star}>
                     <Image src={star} alt="img" width={30} height={30} />
                     <Image src={star} alt="img" width={30} height={30} />
@@ -136,6 +139,7 @@ const DetailsPage = () => {
               </div>
             </div>
           </div>
+          {<Comment />}
         </div>
       </div>
     </div>

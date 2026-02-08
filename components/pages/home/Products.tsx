@@ -3,8 +3,8 @@ import { useGetProduct } from "@/api/products";
 import scss from "./Products.module.scss";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import Image from "next/image";
+import { CgShoppingCart } from "react-icons/cg";
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Products = () => {
@@ -22,6 +22,7 @@ const Products = () => {
     <div id={scss.Products}>
       <div className="container">
         <div className={scss.content}>
+          <h4>Продукты</h4>
           <div className={scss.blocks}>
             {data?.map((item) => (
               <div key={item.id} className={scss.card}>
@@ -59,7 +60,10 @@ const Products = () => {
                     </p>
                   </div>
                 </div>
-                <button>Добавить корзину</button>
+                <button className={scss.send}>
+                  <CgShoppingCart className={scss.cart} />
+                  Добавить корзину
+                </button>
               </div>
             ))}
           </div>
