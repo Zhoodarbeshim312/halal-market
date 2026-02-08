@@ -22,6 +22,7 @@ const Products = () => {
     <div id={scss.Products}>
       <div className="container">
         <div className={scss.content}>
+          <h4>Продукты</h4>
           <div className={scss.blocks}>
             {data?.map((item) => (
               <div key={item.id} className={scss.card}>

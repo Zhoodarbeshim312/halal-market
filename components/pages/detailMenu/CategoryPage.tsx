@@ -13,19 +13,19 @@ const CategoryPage = () => {
   const filteredSubcategories = data?.filter(
     (item) => item.category.id === categoryId,
   );
-
+  const categoryName = data?.find((item) => item.category.id === categoryId)
+    ?.category.category_name;
   return (
     <div id={scss.CategoryPage}>
       <div className="container">
         <div className={scss.content}>
-          <h1>Подкатегории</h1>
+          <h1>
+            <span onClick={() => route.push(`/menu`)}>Mеню</span>/{categoryName}
+          </h1>
           <div className={scss.category}>
             <div className={scss.blocks}>
               {filteredSubcategories?.map((item) => (
-                <div
-                  key={item.id}
-                  className={scss.card}
-                >
+                <div key={item.id} className={scss.card}>
                   <Image
                     src={item.subcategory_image}
                     width={160}
