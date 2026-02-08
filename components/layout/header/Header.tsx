@@ -4,6 +4,7 @@ import scss from "./Header.module.scss";
 import { IoIosSearch } from "react-icons/io";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { LuSearch } from "react-icons/lu";
 
 const Header: FC = () => {
   const [open, setOpen] = useState(false);
@@ -81,6 +82,14 @@ const Header: FC = () => {
           </div>
         </div>
       </header>
+      <search className={scss.searchHeader}>
+        <div className="container">
+          <a>
+            <LuSearch />
+          </a>
+          <input type="text" placeholder="Поиск товаров..." />
+        </div>
+      </search>
     </>
   );
 };

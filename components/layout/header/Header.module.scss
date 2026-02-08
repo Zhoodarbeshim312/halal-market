@@ -12,7 +12,9 @@ $border: #0a889197;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: 0.3s ease;
-
+  @media (max-width: 500px) {
+    display: none;
+  }
   .topInner {
     display: flex;
     justify-content: space-between;
@@ -180,5 +182,32 @@ $border: #0a889197;
       font-size: 15px;
       cursor: pointer;
     }
+  }
+  @media (max-width: 750px) {
+    display: none;
+  }
+}
+.searchHeader {
+  position: relative;
+  display: none;
+  padding-top: 40px;
+  input {
+    width: 100%;
+    border: 1px solid #0a8791;
+    padding: 10px 10px 10px 40px;
+    border-radius: 15px;
+  }
+  a {
+    left: 65px;
+    top: 60%;
+    position: absolute;
+    color: #697077;
+    font-size: 22px;
+    @media (max-width: 555px) {
+      left: 55px;
+    }
+  }
+  @media (max-width: 750px) {
+    display: flex;
   }
 }

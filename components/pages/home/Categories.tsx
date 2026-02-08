@@ -4,6 +4,8 @@ import scss from "./Categories.module.scss";
 import halal from "@/app/favicon.ico";
 import { useRouter } from "next/navigation";
 import { useGetCategory } from "@/api/categories";
+import { IoIosMenu } from "react-icons/io";
+import { FiMenu } from "react-icons/fi";
 
 const Categories = () => {
   const route = useRouter();
@@ -44,6 +46,16 @@ const Categories = () => {
               </div>
             ))}
           </div>
+        </div>
+        <div className={scss.mobile_content}>
+          <button>
+            <FiMenu />
+            Все категории
+          </button>
+          <button>Мясо</button>
+          <button>Молочные продукты</button>
+          <button>Сладости</button>
+          <button>Напитки</button>
         </div>
       </div>
     </div>
