@@ -2,19 +2,30 @@
   background: white;
   padding: 20px 0;
   border-bottom: 2px solid #dde1e6;
+
   .content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     h1 {
       color: #0a8791;
       font-size: 20px;
       cursor: pointer;
     }
+
     button {
+      display: none;
+      align-items: center;
+      justify-content: center;
       color: #0a8791;
-      font-size: 18px;
+      font-size: 30px;
       background: none;
+      border: none;
+      cursor: pointer;
+      @media (max-width: 750px) {
+        display: flex;
+      }
     }
   }
 }

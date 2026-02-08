@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 import scss from "./SideBar.module.scss";
 import { HiOutlineBell } from "react-icons/hi";
 import Image from "next/image";
@@ -10,10 +10,12 @@ import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { AiOutlineProduct } from "react-icons/ai";
 import { LuUsers } from "react-icons/lu";
 import { FaRegUserCircle } from "react-icons/fa";
-
+import { useSidebarStore } from "@/store/styleState";
 const SideBar: FC = () => {
+  const isOpen = useSidebarStore((state) => state.isOpen);
+
   return (
-    <section className={scss.SideBar}>
+    <aside className={`${scss.SideBar} ${isOpen ? scss.open : ""}`}>
       <div className="container">
         <div className={scss.content}>
           <div className={scss.head}>
@@ -138,7 +140,7 @@ const SideBar: FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </aside>
   );
 };
 

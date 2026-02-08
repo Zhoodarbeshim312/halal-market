@@ -18,7 +18,8 @@
     "react-hook-form": "^7.71.0",
     "react-icons": "^5.5.0",
     "react-input-mask": "^2.0.4",
-    "sass": "^1.97.2"
+    "sass": "^1.97.2",
+    "zustand": "^5.0.11"
   },
   "devDependencies": {
     "@types/node": "^20",
