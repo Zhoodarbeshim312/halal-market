@@ -5,7 +5,6 @@ import { IoIosSearch } from "react-icons/io";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-
 const Header: FC = () => {
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState("Все категории");
@@ -26,7 +25,12 @@ const Header: FC = () => {
           <div className={scss.topInner}>
             <div className={scss.logo}>HALAL industry</div>
             <div className={scss.topActions}>
-              <button className={scss.beSeller}>Стать продавцом</button>
+              <button
+                onClick={() => nav.push("/seller")}
+                className={scss.beSeller}
+              >
+                Стать продавцом
+              </button>
               <button onClick={() => nav.push("/login")} className={scss.login}>
                 Войти
               </button>
