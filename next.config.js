@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: "34.228.55.22",
         pathname: "/media/**",
       },
+      {
+        protocol: "http",
+        hostname: "3.90.78.102",
+        pathname: "/media/**",
+      },
     ],
   },
 };
