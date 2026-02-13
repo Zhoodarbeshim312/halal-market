@@ -1,11 +1,11 @@
 import { FC } from "react";
-import scss from "./Profile.module.scss";
+import scss from "./Admin.module.scss";
 import Image from "next/image";
 import user from "@/assets/images/userImg.png";
 
-const Profile: FC = () => {
+const Admin: FC = () => {
   return (
-    <section className={scss.Profile}>
+    <section className={scss.Admin}>
       <div className="container">
         <div className={scss.content}>
           <div className={scss.profile}>
@@ -48,4 +48,4 @@ const Profile: FC = () => {
   );
 };
 
-export default Profile;
+export default Admin;

@@ -1,3 +1,4 @@
+"use client";
 import { FC } from "react";
 import scss from "./Footer.module.scss";
 import Image from "next/image";
@@ -13,8 +14,10 @@ import {
 } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 import { GoHome } from "react-icons/go";
+import { useRouter } from "next/navigation";
 
 const Footer: FC = () => {
+  const nav = useRouter();
   return (
     <>
       <footer className={scss.Footer}>
@@ -76,7 +79,7 @@ const Footer: FC = () => {
       <footer className={scss.footer_mobile}>
         <div className="container">
           <div className={scss.btns}>
-            <button>
+            <button onClick={() => nav.push("/menu")}>
               <FiMenu
                 style={{
                   fontSize: "30px",
@@ -84,7 +87,7 @@ const Footer: FC = () => {
               />
               Меню
             </button>
-            <button>
+            <button onClick={() => nav.push("/")}>
               <GoHome
                 style={{
                   fontSize: "30px",
@@ -92,7 +95,7 @@ const Footer: FC = () => {
               />
               Главный
             </button>
-            <button>
+            <button onClick={() => nav.push("/prifle")}>
               <FaRegUserCircle
                 style={{
                   fontSize: "30px",

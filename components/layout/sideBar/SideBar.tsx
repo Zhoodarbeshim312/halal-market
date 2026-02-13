@@ -1,4 +1,4 @@
-import { CSSProperties, FC } from "react";
+import { FC } from "react";
 import scss from "./SideBar.module.scss";
 import { HiOutlineBell } from "react-icons/hi";
 import Image from "next/image";
@@ -11,9 +11,17 @@ import { AiOutlineProduct } from "react-icons/ai";
 import { LuUsers } from "react-icons/lu";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useSidebarStore } from "@/store/styleState";
+import { useModalStore } from "@/store/modalState";
 const SideBar: FC = () => {
   const isOpen = useSidebarStore((state) => state.isOpen);
-
+  const isModalOpen = useModalStore((state) => state.openModal);
+  const toggleModal = useModalStore((state) => state.toggle);
+  const mess = [
+    {
+      id: 1,
+      message: "seller",
+    },
+  ];
   return (
     <aside className={`${scss.SideBar} ${isOpen ? scss.open : ""}`}>
       <div className="container">
@@ -25,14 +33,16 @@ const SideBar: FC = () => {
             </h1>
             <div className={scss.icon}>
               <Image width={80} height={80} src={user} alt="icon" />
-              <div className={scss.bellContent}>
+              <div onClick={toggleModal} className={scss.bellContent}>
                 <HiOutlineBell
                   style={{
                     color: "#FDC818",
                     fontSize: "40px",
                   }}
                 />
-                <div className={scss.bell}>9+</div>
+                {mess.length ? (
+                  <div className={scss.bell}>{mess.length}</div>
+                ) : null}
               </div>
             </div>
             <nav className={scss.nav}>
@@ -138,6 +148,12 @@ const SideBar: FC = () => {
               </Link>
             </nav>
           </div>
+          <div
+            style={{
+              display: isModalOpen ? "flex" : "none",
+            }}
+            className={scss.modal}
+          ></div>
         </div>
       </div>
     </aside>
