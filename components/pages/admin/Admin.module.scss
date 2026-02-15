@@ -35,7 +35,19 @@
             font-size: 16px;
             cursor: pointer;
           }
-
+          button {
+            font-size: clamp(0.875rem, 0.784rem + 0.45vw, 1.125rem);
+            font-weight: 500;
+            color: red;
+            padding: 10px 20px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            background: none;
+            transition: all 0.3s;
+            &:hover {
+              background: rgba(255, 0, 0, 0.13);
+            }
+          }
           .upload {
             display: inline-flex;
             align-items: center;
@@ -43,7 +55,7 @@
             padding: 10px 20px;
             border: 2px solid #0a8a8a;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: clamp(0.875rem, 0.784rem + 0.45vw, 1.125rem);
             font-weight: 500;
             color: #0a8a8a;
             cursor: pointer;

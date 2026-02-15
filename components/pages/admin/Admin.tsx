@@ -17,7 +17,7 @@ const Admin: FC = () => {
                   Загрузить фото
                   <input type="file" hidden />
                 </label>
-                <a>Удалить</a>
+                <button>Покинуть</button>
               </div>
             </div>
             <div className={scss.line}></div>

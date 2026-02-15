@@ -206,7 +206,7 @@ const SideBar: FC = () => {
             }}
             className={scss.modal}
           >
-            <h1>Заявка на продовца</h1>
+            <h1>Заявки на регистрацию продавца</h1>
             <a onClick={toggleModal}>
               <IoClose />
             </a>
