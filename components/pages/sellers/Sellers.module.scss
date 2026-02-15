@@ -1,0 +1,166 @@
+.Sellers {
+  padding: 20px;
+  height: 90vh;
+  overflow-y: scroll;
+  .top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    input {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      width: 250px;
+    }
+  }
+
+  .tabs {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+
+    button {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      background: #e8f4f6;
+      cursor: pointer;
+    }
+
+    .active {
+      background: #0a8791;
+      color: white;
+    }
+
+    .activeRed {
+      background: #ffdddd;
+      color: red;
+    }
+
+    .confirmBtn {
+      margin-left: auto;
+      background: #0a8791;
+      color: white;
+    }
+  }
+
+  .tableWrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+
+    th,
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    thead {
+      background: #e5f4f6;
+    }
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+
+    span {
+      font-size: 12px;
+      color: gray;
+    }
+  }
+
+  .actions {
+    position: relative;
+
+    .dropdown {
+      position: absolute;
+      right: 0;
+      top: 30px;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      button {
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 6px 10px;
+        text-align: left;
+      }
+
+      .red {
+        color: red;
+      }
+
+      .green {
+        color: green;
+      }
+
+      .delete {
+        color: red;
+      }
+    }
+  }
+
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    button {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background: white;
+      cursor: pointer;
+    }
+
+    .activePage {
+      background: #0a8791;
+      color: white;
+      border: none;
+    }
+  }
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  .Sellers {
+    .top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .tabs {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .confirmBtn {
+        margin-left: 0;
+      }
+    }
+  }
+}
