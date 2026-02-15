@@ -12,6 +12,7 @@ import { LuUsers } from "react-icons/lu";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useSidebarStore } from "@/store/styleState";
 import { useModalStore } from "@/store/modalState";
+import { IoClose } from "react-icons/io5";
 const SideBar: FC = () => {
   const isOpen = useSidebarStore((state) => state.isOpen);
   const isModalOpen = useModalStore((state) => state.openModal);
@@ -19,6 +20,57 @@ const SideBar: FC = () => {
   const mess = [
     {
       id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
+      message: "seller",
+    },
+    {
+      id: 1,
+      name: "Zhoodar",
       message: "seller",
     },
   ];
@@ -153,7 +205,23 @@ const SideBar: FC = () => {
               display: isModalOpen ? "flex" : "none",
             }}
             className={scss.modal}
-          ></div>
+          >
+            <h1>Заявка на продовца</h1>
+            <a onClick={toggleModal}>
+              <IoClose />
+            </a>
+            <div className={scss.box}>
+              {mess.map((el) => (
+                <div className={scss.message}>
+                  <p>{el.name}</p>
+                  <div className={scss.btns}>
+                    <button className={scss.btn1}>Принять</button>
+                    <button className={scss.btn2}>Отколнить</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </aside>
