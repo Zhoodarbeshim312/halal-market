@@ -54,16 +54,10 @@
           .row {
             cursor: pointer;
             font-size: 24px;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 50%;
-            transition: background 0.3s;
-
-            &:hover {
-              background-color: rgba(0, 0, 0, 0.6);
-            }
+            background: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
         }
 
