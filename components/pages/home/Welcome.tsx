@@ -1,9 +1,13 @@
+"use client"
 import { FC } from "react";
 import scss from "./Welcome.module.scss";
 import Image from "next/image";
 import welcome_image from "@/public/welcome_img.png";
+import { useGetProduct } from "@/api/products";
 
 const Welcome: FC = () => {
+  const { data } = useGetProduct();
+
   return (
     <section className={scss.Welcome}>
       <div className="container">
