@@ -6,6 +6,8 @@ import Image from "next/image";
 import { CgShoppingCart } from "react-icons/cg";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const Products = () => {
   const { data } = useGetProduct();
@@ -75,7 +77,7 @@ const Products = () => {
                         <IoMdHeartEmpty />
                       )}
                     </button>
-                    <div className={scss.imgBlock}>
+                    {/* <div className={scss.imgBlock}>
                       <button
                         className={scss.row}
                         onClick={() =>
@@ -99,6 +101,37 @@ const Products = () => {
                       >
                         {">"}
                       </button>
+                    </div> */}
+                    <div className={scss.imgBlock}>
+                      {item.images?.length > 1 && (
+                        <button
+                          className={scss.row}
+                          onClick={() =>
+                            handleSlideImg(item.id, "prev", item.images.length)
+                          }
+                        >
+                          <MdOutlineKeyboardArrowLeft />
+                        </button>
+                      )}
+
+                      <Image
+                        src={item.images?.[currentImageIndex]?.product_image}
+                        alt={item.product_name}
+                        width={220}
+                        height={230}
+                        className={scss.image}
+                      />
+
+                      {item.images?.length > 1 && (
+                        <button
+                          className={scss.row}
+                          onClick={() =>
+                            handleSlideImg(item.id, "next", item.images.length)
+                          }
+                        >
+                          <MdOutlineKeyboardArrowRight/>
+                        </button>
+                      )}
                     </div>
                     <div className={scss.info}>
                       <p className={scss.price}>{item.price} сом</p>
