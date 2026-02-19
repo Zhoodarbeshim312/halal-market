@@ -1,47 +1,14 @@
-import { useMutation, UseMutationResult } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { api } from "..";
+import { ISeller } from "./type";
 
-const useSellerCreate = (): UseMutationResult<
-  SellerCreateResponse,
-  unknown,
-  SellerCreateRequest
-> => {
+const useSeller = () => {
   return useMutation({
-    mutationFn: async (
-      data: SellerCreateRequest,
-    ): Promise<SellerCreateResponse> => {
-      const payload = {
-        phone_number: "+996" + data.phone.replace(/\D/g, ""),
-        message: "Seller registration",
-      };
-      console.log("📤 POST payload:", payload);
-      const res = await api.post<SellerCreateResponse>(
-        "/seller_requests/",
-        payload,
-      );
-      return res.data;
+    mutationFn: async (newSeller: ISeller) => {
+      const response = await api.post("/seller_requests/", newSeller);
+      console.log(newSeller);
+      return response.data;
     },
   });
 };
-
-const useSellerVerify = (): UseMutationResult<
-  SellerVerifyResponse,
-  unknown,
-  SellerVerifyRequest
-> => {
-  return useMutation({
-    mutationFn: async (
-      data: SellerVerifyRequest,
-    ): Promise<SellerVerifyResponse> => {
-      const res = await api.patch<SellerVerifyResponse>(
-        `/seller_requests/${data.id}/`,
-        {
-          code: data.code,
-        },
-      );
-      return res.data;
-    },
-  });
-};
-
-export { useSellerCreate, useSellerVerify };
+export { useSeller };

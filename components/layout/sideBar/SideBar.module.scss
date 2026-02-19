@@ -127,57 +127,74 @@
     background: white;
     border-radius: 10px;
     box-shadow: 0 0 10px 1px silver;
-    padding-top: 50px;
-    h1 {
-      font-size: 18px;
-      top: 10px;
-      position: absolute;
-    }
-    a {
-      font-size: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      top: 5px;
-      right: 5px;
-      position: absolute;
-    }
-    .box {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      padding-top: 40px;
-      overflow-y: scroll;
+    padding: 60px 20px 20px 20px;
+    overflow-y: auto;
+  }
 
-      .message {
-        border: 2px solid #0a8791;
-        padding: 10px;
-        margin: 10px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .btns {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          .btn1 {
-            background: limegreen;
-            color: white;
-            padding: 5px;
-            font-size: 18px;
-            border-radius: 10px;
-          }
-          .btn2 {
-            border-radius: 10px;
-            background: red;
-            color: white;
-            padding: 5px;
-            font-size: 18px;
-          }
-        }
-      }
+  .modal h1 {
+    font-size: 18px;
+    position: absolute;
+    top: 15px;
+  }
+
+  .modal a {
+    font-size: 22px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  .box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    @media (max-width: 445px) {
+      flex-direction: column;
+      gap: 10px;
     }
+  }
+
+  .info {
+    border: 2px solid #0a8791;
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .accept {
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s;
+  }
+
+  .accept:hover {
+    opacity: 0.8;
+  }
+
+  .reject {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s;
+  }
+
+  .reject:hover {
+    opacity: 0.8;
   }
 
   @media (max-width: 750px) {

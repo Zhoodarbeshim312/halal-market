@@ -1,15 +1,16 @@
 "use client";
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import scss from "./Header.module.scss";
 import { IoIosSearch } from "react-icons/io";
+import { LuSearch } from "react-icons/lu";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { LuSearch } from "react-icons/lu";
-
+import { IoExitOutline } from "react-icons/io5";
+import { GrUserAdmin } from "react-icons/gr";
 const Header: FC = () => {
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState("Все категории");
-
+  const [isLogged, setIsLogged] = useState(false);
   const categories = [
     "Все категории",
     "Мясо",
@@ -18,7 +19,10 @@ const Header: FC = () => {
     "Напитки",
   ];
   const nav = useRouter();
-
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    setIsLogged(!!token);
+  }, []);
   return (
     <>
       <header className={scss.topHeader}>
@@ -26,15 +30,43 @@ const Header: FC = () => {
           <div className={scss.topInner}>
             <div className={scss.logo}>HALAL industry</div>
             <div className={scss.topActions}>
-              <button
-                onClick={() => nav.push("/seller")}
-                className={scss.beSeller}
-              >
-                Стать продавцом
-              </button>
-              <button onClick={() => nav.push("/login")} className={scss.login}>
-                Войти
-              </button>
+              {!isLogged && (
+                <>
+                  <button
+                    onClick={() => nav.push("/login")}
+                    className={scss.login}
+                  >
+                    Войти
+                  </button>
+                </>
+              )}
+              {isLogged && (
+                <>
+                  <button
+                    onClick={() => nav.push("/seller")}
+                    className={scss.beSeller}
+                  >
+                    Стать продавцом
+                  </button>
+                  <button
+                    onClick={() => nav.push("/admin")}
+                    className={scss.profile}
+                  >
+                    <GrUserAdmin />
+                  </button>
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem("access_token");
+                      localStorage.removeItem("refresh_token");
+                      setIsLogged(false);
+                      nav.push("/login");
+                    }}
+                    className={scss.logout}
+                  >
+                    <IoExitOutline />
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>

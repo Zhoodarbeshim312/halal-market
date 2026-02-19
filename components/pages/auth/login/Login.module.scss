@@ -61,11 +61,11 @@
         justify-content: space-between;
         font-size: 14px;
 
-        a {
+        button {
           color: #8b8b8b;
           font-weight: 400;
           text-decoration: none;
-
+          background: none;
           &:hover {
             text-decoration: underline;
           }

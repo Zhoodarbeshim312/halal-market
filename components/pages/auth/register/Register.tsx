@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import scss from "./Register.module.scss";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { useRegister } from "@/api/register";
+import { useRouter } from "next/navigation";
 
 export type TUser = {
   username: string;
@@ -48,7 +49,7 @@ const Register: FC = () => {
       console.log("HEADERS:", error.response?.headers);
     }
   };
-
+  const nav = useRouter();
   return (
     <section className={scss.Register}>
       <div className={scss.content}>
@@ -106,6 +107,7 @@ const Register: FC = () => {
           >
             {isPending ? "Регистрация..." : "Зарегистрироваться"}
           </button>
+          <a onClick={() => nav.push("/login")}>Войти</a>
         </div>
       </div>
     </section>
