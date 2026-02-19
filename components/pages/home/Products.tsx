@@ -8,23 +8,20 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-
+import placeholder from "@/public/No-Image-Placeholder.png";
 const Products = () => {
   const { data } = useGetProduct();
-
   const [readmore, setReadmore] = useState<number | null>(null);
   const [slideImg, setSlideImg] = useState<{ [key: number]: number }>({});
   const [liked, setLiked] = useState<number[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; // Количество товаров на странице
+  const itemsPerPage = 8;
   const route = useRouter();
-
   const toggleLike = (id: number) => {
     setLiked((prev) =>
       prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
     );
   };
-
   const handleSlideImg = (
     itemId: number,
     direction: "next" | "prev",
@@ -33,28 +30,22 @@ const Products = () => {
     setSlideImg((prev) => {
       const currentIndex = prev[itemId] || 0;
       let newIndex;
-
       if (direction === "next") {
         newIndex = currentIndex === totalImages - 1 ? 0 : currentIndex + 1;
       } else {
         newIndex = currentIndex === 0 ? totalImages - 1 : currentIndex - 1;
       }
-
       return { ...prev, [itemId]: newIndex };
     });
   };
-
-  // Вычисление пагинации
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data?.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = data ? Math.ceil(data.length / itemsPerPage) : 0;
-
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
   return (
     <div id={scss.Products}>
       <div className="container">
@@ -63,7 +54,6 @@ const Products = () => {
           <div className={scss.blocks}>
             {currentItems?.map((item) => {
               const currentImageIndex = slideImg[item.id] || 0;
-
               return (
                 <div key={item.id} className={scss.card}>
                   <div className={scss.incard}>
@@ -103,34 +93,55 @@ const Products = () => {
                       </button>
                     </div> */}
                     <div className={scss.imgBlock}>
-                      {item.images?.length > 1 && (
-                        <button
-                          className={scss.row}
-                          onClick={() =>
-                            handleSlideImg(item.id, "prev", item.images.length)
-                          }
-                        >
-                          <MdOutlineKeyboardArrowLeft />
-                        </button>
-                      )}
-
-                      <Image
-                        src={item.images?.[currentImageIndex]?.product_image}
-                        alt={item.product_name}
-                        width={220}
-                        height={230}
-                        className={scss.image}
-                      />
-
-                      {item.images?.length > 1 && (
-                        <button
-                          className={scss.row}
-                          onClick={() =>
-                            handleSlideImg(item.id, "next", item.images.length)
-                          }
-                        >
-                          <MdOutlineKeyboardArrowRight/>
-                        </button>
+                      {item.images &&
+                      item.images[currentImageIndex]?.product_image ? (
+                        <>
+                          {item.images.length > 1 && (
+                            <button
+                              className={scss.row}
+                              onClick={() =>
+                                handleSlideImg(
+                                  item.id,
+                                  "prev",
+                                  item.images.length,
+                                )
+                              }
+                            >
+                              <MdOutlineKeyboardArrowLeft />
+                            </button>
+                          )}
+                          <Image
+                            src={item.images[currentImageIndex].product_image}
+                            alt={item.product_name || "Product"}
+                            width={220}
+                            height={230}
+                            className={scss.image}
+                            loading="lazy"
+                          />
+                          {item.images.length > 1 && (
+                            <button
+                              className={scss.row}
+                              onClick={() =>
+                                handleSlideImg(
+                                  item.id,
+                                  "next",
+                                  item.images.length,
+                                )
+                              }
+                            >
+                              <MdOutlineKeyboardArrowRight />
+                            </button>
+                          )}
+                        </>
+                      ) : (
+                        <Image
+                          src={placeholder}
+                          alt="Нет изображения"
+                          width={220}
+                          height={230}
+                          className={scss.image}
+                          loading="lazy"
+                        />
                       )}
                     </div>
                     <div className={scss.info}>
@@ -156,8 +167,6 @@ const Products = () => {
               );
             })}
           </div>
-
-          {/* Пагинация */}
           {totalPages > 1 && (
             <div className={scss.pagination}>
               <button
@@ -167,7 +176,6 @@ const Products = () => {
               >
                 Назад
               </button>
-
               {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                 (number) => (
                   <button
@@ -181,7 +189,6 @@ const Products = () => {
                   </button>
                 ),
               )}
-
               <button
                 onClick={() => paginate(currentPage + 1)}
                 disabled={currentPage === totalPages}

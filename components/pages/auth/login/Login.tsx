@@ -5,22 +5,23 @@ import { FaEnvelope, FaLock } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { useLogin } from "@/api/login";
 import { TUser } from "../../../../api/login/type";
-
 const Login: FC = () => {
   const nav = useRouter();
   const { mutateAsync: handleLogin, isPending } = useLogin();
-  const [values, setValues] = useState<TUser>({ email: "", password: "" });
-
+  const [values, setValues] = useState<TUser>({
+    email: "",
+    password: "",
+  });
   const login = async () => {
     if (!values.email.trim() || !values.password.trim()) {
       alert("Пожалуйста, заполните все поля!");
       return;
     }
-
     try {
       const res = await handleLogin(values);
+      localStorage.setItem("access_token", res.access);
+      localStorage.setItem("refresh_token", res.refresh);
       alert("Успешно вошли в систему!");
-      localStorage.setItem("token", res.token);
       nav.push("/");
     } catch (error: any) {
       const data = error.response?.data;
@@ -32,7 +33,6 @@ const Login: FC = () => {
       }
     }
   };
-
   return (
     <section className={scss.Login}>
       <div className={scss.content}>
@@ -64,8 +64,12 @@ const Login: FC = () => {
             {isPending ? "Входим..." : "Войти"}
           </button>
           <div className={scss.links}>
-            <a onClick={() => nav.push("/resetPassword")}>Забыли пароль?</a>
-            <a onClick={() => nav.push("/register")}>Зарегистрироваться</a>
+            <button type="button" onClick={() => nav.push("/resetPassword")}>
+              Забыли пароль?
+            </button>
+            <button type="button" onClick={() => nav.push("/register")}>
+              Зарегистрироваться
+            </button>
           </div>
         </div>
       </div>
