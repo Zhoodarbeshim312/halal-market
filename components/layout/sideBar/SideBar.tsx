@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import scss from "./SideBar.module.scss";
 import { HiOutlineBell } from "react-icons/hi";
 import Image from "next/image";
@@ -13,18 +13,32 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { useSidebarStore } from "@/store/styleState";
 import { useModalStore } from "@/store/modalState";
 import { IoClose } from "react-icons/io5";
-import { getSellerRequests } from "@/api/sellerRequests";
+import { getSellerRequests, usePatchSellerRequest } from "@/api/sellerRequests";
+import { useGetClients } from "@/api/clients";
 const SideBar: FC = () => {
   const isOpen = useSidebarStore((state) => state.isOpen);
   const isModalOpen = useModalStore((state) => state.openModal);
   const toggleModal = useModalStore((state) => state.toggle);
   const { data: seller_requests } = getSellerRequests();
+  const { mutate, isPending } = usePatchSellerRequest();
+  const { data: clients } = useGetClients();
+  console.log(seller_requests);
+
   const handleAccept = (id: number) => {
-    console.log("Принять:", id);
+    mutate({
+      id,
+      data: { status: "approved" },
+    });
   };
+
   const handleReject = (id: number) => {
-    console.log("Отказать:", id);
+    mutate({
+      id,
+      data: { status: "rejected" },
+    });
   };
+  const filteredRequests =
+    seller_requests?.filter((item) => item.user.user_role === "client") ?? [];
   return (
     <aside className={`${scss.SideBar} ${isOpen ? scss.open : ""}`}>
       <div className="container">
@@ -43,9 +57,9 @@ const SideBar: FC = () => {
                     fontSize: "40px",
                   }}
                 />
-                {seller_requests?.length ? (
-                  <div className={scss.bell}>{seller_requests.length}</div>
-                ) : null}
+                {filteredRequests.length > 0 && (
+                  <div className={scss.bell}>{filteredRequests.length}</div>
+                )}
               </div>
             </div>
             <nav className={scss.nav}>
@@ -161,23 +175,25 @@ const SideBar: FC = () => {
             <a onClick={toggleModal}>
               <IoClose />
             </a>
-            {seller_requests?.map((item) => (
+            {filteredRequests?.map((item) => (
               <div key={item.id} className={scss.box}>
-                <div className={scss.info}>{item.phone_number}</div>
-
+                <div className={scss.info}>
+                  {item.user.username} — {item.phone_number}
+                </div>
                 <div className={scss.actions}>
                   <button
                     className={scss.accept}
+                    disabled={isPending}
                     onClick={() => handleAccept(item.id)}
                   >
-                    Принять
+                    {isPending ? "..." : "Принять"}
                   </button>
-
                   <button
                     className={scss.reject}
+                    disabled={isPending}
                     onClick={() => handleReject(item.id)}
                   >
-                    Отказать
+                    {isPending ? "..." : "Отказать"}
                   </button>
                 </div>
               </div>

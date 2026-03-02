@@ -7,10 +7,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { IoExitOutline } from "react-icons/io5";
 import { GrUserAdmin } from "react-icons/gr";
+import { useGetClients } from "@/api/clients";
 const Header: FC = () => {
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState("Все категории");
   const [isLogged, setIsLogged] = useState(false);
+  const { data, isLoading } = useGetClients();
+  const currentUser = data?.[0];
   const categories = [
     "Все категории",
     "Мясо",
@@ -48,12 +51,14 @@ const Header: FC = () => {
                   >
                     Стать продавцом
                   </button>
-                  <button
-                    onClick={() => nav.push("/admin")}
-                    className={scss.profile}
-                  >
-                    <GrUserAdmin />
-                  </button>
+                  {currentUser?.user_role === "admin" && (
+                    <button
+                      onClick={() => nav.push("/admin")}
+                      className={scss.profile}
+                    >
+                      <GrUserAdmin />
+                    </button>
+                  )}
                   <button
                     onClick={() => {
                       localStorage.removeItem("access_token");

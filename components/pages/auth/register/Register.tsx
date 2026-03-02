@@ -20,7 +20,7 @@ const Register: FC = () => {
     phone_number: "",
     password: "",
   });
-
+  const nav = useRouter();
   const register = async () => {
     if (
       !values.username.trim() ||
@@ -36,6 +36,7 @@ const Register: FC = () => {
       await handleRegister(values);
 
       alert("Регистрация прошла успешно!");
+      nav.push("/login");
       setValues({
         username: "",
         email: "",
@@ -49,7 +50,6 @@ const Register: FC = () => {
       console.log("HEADERS:", error.response?.headers);
     }
   };
-  const nav = useRouter();
   return (
     <section className={scss.Register}>
       <div className={scss.content}>
