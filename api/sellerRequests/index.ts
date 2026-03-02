@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "..";
 
 const getSellerRequests = () => {
-  return useQuery<SELLER_REQUESTS.req_sellers[]>({
+  return useQuery<SELLER_REQUESTS.ReqSeller[]>({
     queryKey: ["seller_requests"],
     queryFn: async () => {
       const response = await api.get("/seller_requests/");
@@ -19,4 +19,30 @@ const getByIdSellerRequests = (id: number) => {
     },
   });
 };
-export { getSellerRequests, getByIdSellerRequests };
+type PatchSellerRequest = {
+  id: number;
+  data: {
+    phone_number?: string;
+    status?: "pending" | "approved" | "rejected";
+  };
+};
+
+const usePatchSellerRequest = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ id, data }: PatchSellerRequest) => {
+      const response = await api.patch(`/seller_requests/${id}/`, data);
+      return response.data;
+    },
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: ["seller_requests"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["seller_request", variables.id],
+      });
+    },
+  });
+};
+export { getSellerRequests, getByIdSellerRequests, usePatchSellerRequest };
