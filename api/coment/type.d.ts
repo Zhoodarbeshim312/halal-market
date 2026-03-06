@@ -9,4 +9,5 @@ namespace USER {
     total_likes: number;
     created_at: string;
   }[];
+
 }

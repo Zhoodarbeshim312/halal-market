@@ -1,0 +1,36 @@
+#Offer {
+  padding-block: 30px;
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    p {
+      font-weight: 400;
+      font-size: 19px;
+      color: #373737;
+    }
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #37373727;
+    }
+    .zag {
+      font-weight: 400;
+      font-size: 19px;
+      color: #fe585a;
+    }
+    .menu {
+      list-style-type: disc; /* ставим точку (disc) */
+      padding-left: 20px;
+      ul.menu li::marker {
+        color: #3737375d; /* цвет точки */
+        font-size: 1px; /* размер точки */
+      }
+      li {
+        font-weight: 300;
+        font-size: 16px;
+        color: #373737;
+      }
+    }
+  }
+}

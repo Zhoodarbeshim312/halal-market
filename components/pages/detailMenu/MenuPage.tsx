@@ -1,13 +1,14 @@
 "use client";
 import scss from "./MenuPage.module.scss";
-import { useRouter } from "next/navigation";
-import { useGetCategory } from "@/api/categories";
+import { useParams, useRouter } from "next/navigation";
+import { useGetIdCategory } from "@/api/categories";
 import Image from "next/image";
 
 const MenuPage = () => {
+  const { id } = useParams();
   const route = useRouter();
-  const { data } = useGetCategory();
-  console.log(data);
+  const { data } = useGetIdCategory(Number(id));
+  // console.log(data);
 
   return (
     <div id={scss.MenuPage}>
@@ -16,7 +17,7 @@ const MenuPage = () => {
           <h1>Меню</h1>
           <div className={scss.category}>
             <div className={scss.blocks}>
-              {data?.map((el, idx) => (
+              {data?.subcategories.map((el, idx) => (
                 <div
                   key={el.id || idx}
                   className={scss.card}
@@ -26,10 +27,10 @@ const MenuPage = () => {
                     className={scss.image}
                     width={165}
                     height={165}
-                    src={el.category_image}
+                    src={el.subcategory_image}
                     alt="img"
                   />
-                  <p>{el.category_name}</p>
+                  <p>{el.subcategory_name}</p>
                 </div>
               ))}
               <div />
