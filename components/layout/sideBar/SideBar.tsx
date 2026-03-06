@@ -63,7 +63,7 @@ const SideBar: FC = () => {
               </div>
             </div>
             <nav className={scss.nav}>
-              <Link href={"/admin"}>
+              <Link href={"/desktop"}>
                 <RiHome2Line
                   style={{
                     display: "flex",
@@ -123,7 +123,7 @@ const SideBar: FC = () => {
                 />
                 Вопросы и ответы
               </Link>
-              <Link href={"/admin"}>
+              <Link href={"/offer"}>
                 <MdOutlineLocalOffer
                   style={{
                     display: "flex",
