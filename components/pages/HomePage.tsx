@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Categories from "./home/Categories";
-import Products from "./home/Products";
+
 import Welcome from "./home/Welcome";
+import Products from "./home/Products";
 const HomePage = () => {
   const router = useRouter();
   const [isChecking, setIsChecking] = useState(true);
@@ -29,7 +30,7 @@ const HomePage = () => {
     <>
       <Welcome />
       <Categories />
-      <Products />
+      <Products/>
     </>
   );
 };
