@@ -31,12 +31,10 @@ const Register: FC = () => {
       alert("Пожалуйста, заполните все поля!");
       return;
     }
-
     try {
       await handleRegister(values);
-
       alert("Регистрация прошла успешно!");
-      nav.push("/login");
+      nav.push("/");
       setValues({
         username: "",
         email: "",

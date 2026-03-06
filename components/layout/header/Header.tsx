@@ -14,6 +14,8 @@ const Header: FC = () => {
   const [isLogged, setIsLogged] = useState(false);
   const { data, isLoading } = useGetClients();
   const currentUser = data?.[0];
+  console.log(data);
+
   const categories = [
     "Все категории",
     "Мясо",
@@ -45,12 +47,26 @@ const Header: FC = () => {
               )}
               {isLogged && (
                 <>
-                  <button
-                    onClick={() => nav.push("/seller")}
-                    className={scss.beSeller}
-                  >
-                    Стать продавцом
-                  </button>
+                  {currentUser?.user_role === "seller" ? (
+                    <div
+                      onClick={() => nav.push("/seller_profile")}
+                      style={{
+                        cursor: "pointer",
+                        fontSize: "20px",
+                        color: "white",
+                        fontWeight: "500",
+                      }}
+                    >
+                      Мой профиль
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => nav.push("/seller")}
+                      className={scss.beSeller}
+                    >
+                      Стать продавцом
+                    </button>
+                  )}
                   {currentUser?.user_role === "admin" && (
                     <button
                       onClick={() => nav.push("/admin")}
@@ -64,7 +80,6 @@ const Header: FC = () => {
                       localStorage.removeItem("access_token");
                       localStorage.removeItem("refresh_token");
                       setIsLogged(false);
-                      nav.push("/login");
                     }}
                     className={scss.logout}
                   >

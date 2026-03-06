@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { api } from "..";
 
 const useGetClients = () => {
-  return useQuery({
+  return useQuery<Clients.ResClients>({
     queryKey: ["clients"],
     queryFn: async () => {
       const response = await api.get("/clients/");
@@ -10,4 +10,5 @@ const useGetClients = () => {
     },
   });
 };
+
 export { useGetClients };

@@ -16,6 +16,8 @@ importers:
         version: 3.0.6
       axios:
         specifier: ^1.13.5
+
+        version: 1.13.6
         version: 1.13.5
       next:
         specifier: '16'
@@ -27,11 +29,16 @@ importers:
         specifier: '19'
         version: 19.2.4(react@19.2.4)
       react-hook-form:
+
+        specifier: ^7.71.1
+        version: 7.71.2(react@19.2.4)
+
         specifier: ^7.71.2
         version: 7.71.2(react@19.2.4)
       react-icon:
         specifier: ^1.0.0
         version: 1.0.0(babel-runtime@5.8.38)(react@19.2.4)
+
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.2.4)
@@ -50,6 +57,7 @@ importers:
     devDependencies:
       '@types/node':
         specifier: ^25
+        version: 25.3.3
         version: 25.3.0
       '@types/react':
         specifier: ^19
@@ -194,6 +202,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
+  '@img/colour@1.1.0':
+    resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
     engines: {node: '>=18'}
@@ -522,6 +532,10 @@ packages:
   '@standard-schema/utils@0.3.0':
     resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
 
+
+  '@standard-schema/utils@0.3.0':
+    resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
+
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
@@ -575,6 +589,8 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
+  '@types/node@25.3.3':
+    resolution: {integrity: sha512-DpzbrH7wIcBaJibpKo9nnSQL0MTRdnWttGyE5haGwK86xgMOkFLp7vEyfQPGLOJh5wNYiJ3V9PmUMDhV9u8kkQ==}
   '@types/node@25.3.0':
     resolution: {integrity: sha512-4K3bqJpXpqfg2XKGK9bpDTc6xO/xoUP/RBWS7AtRMug6zZFaRekiLzjVtAoZMquxoAbzBvy5nxQ7veS5eYzf8A==}
 
@@ -813,6 +829,8 @@ packages:
     resolution: {integrity: sha512-BASOg+YwO2C+346x3LZOeoovTIoTrRqEsqMa6fmfAV0P+U9mFr9NsyOEpiYvFjbc64NMrSswhV50WdXzdb/Z5A==}
     engines: {node: '>=4'}
 
+  axios@1.13.6:
+    resolution: {integrity: sha512-ChTCHMouEe2kn713WHbQGcuYrr6fXTBiu460OTwWrWob16g1bXn4vtz07Ope7ewMozJAnEquLk5lWQWtBig9DQ==}
   axios@1.13.5:
     resolution: {integrity: sha512-cz4ur7Vb0xS4/KUN0tPWe44eqxrIu31me+fbang3ijiNscE129POzipJJA6zniq2C/Z6sJCjMimjS8Lc/GAs8Q==}
 
@@ -843,6 +861,8 @@ packages:
   brace-expansion@2.0.2:
     resolution: {integrity: sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ==}
 
+  brace-expansion@5.0.4:
+    resolution: {integrity: sha512-h+DEnpVvxmfVefa4jFbCf5HdH5YMDXRsmKflpf1pILZWRFlTbJpxeU55nJl4Smt5HQaGzg1o6RHFPJaOqnmBDg==}
   brace-expansion@5.0.3:
     resolution: {integrity: sha512-fy6KJm2RawA5RcHkLa1z/ScpBeA762UF9KmZQxwIbDtRJrgLzM10depAiEQ+CXYcoiqW1/m96OAAoke2nE9EeA==}
     engines: {node: 18 || 20 || >=22}
@@ -1047,6 +1067,8 @@ packages:
     resolution: {integrity: sha512-w+5mJ3GuFL+NjVtJlvydShqE1eN3h3PbI7/5LAsYJP/2qtuMXjfL2LpHSRqo4b4eSF5K/DH1JXKUAHSB2UW50g==}
     engines: {node: '>= 0.4'}
 
+  es-toolkit@1.45.0:
+    resolution: {integrity: sha512-RArCX+Zea16+R1jg4mH223Z8p/ivbJjIkU3oC6ld2bdUfmDxiCkFYSi9zLOR2anucWJUeH4Djnzgd0im0nD3dw==}
   es-toolkit@1.44.0:
     resolution: {integrity: sha512-6penXeZalaV88MM3cGkFZZfOoLGWshWWfdy0tWw/RlVVyhvMaWSBTOvXNeiW3e5FwdS5ePW0LGEu17zT139ktg==}
 
@@ -1544,6 +1566,8 @@ packages:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
 
+  minimatch@10.2.4:
+    resolution: {integrity: sha512-oRjTw/97aTBN0RHbYCdtF1MQfvusSIBQM0IZEgzl6426+8jSC0nF1a/GmnVLpfB9yyr6g6FTqWqiZVbxrtaCIg==}
   minimatch@10.2.2:
     resolution: {integrity: sha512-+G4CpNBxa5MprY+04MbgOw1v7So6n5JY166pFi9KfYwT78fxScCeSNQSNzp6dpPSW2rONOps6Ocam1wFhCgoVw==}
     engines: {node: 18 || 20 || >=22}
@@ -2190,6 +2214,7 @@ snapshots:
     dependencies:
       '@eslint/object-schema': 3.0.2
       debug: 4.4.3
+      minimatch: 10.2.4
       minimatch: 10.2.2
     transitivePeerDependencies:
       - supports-color
@@ -2220,6 +2245,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
+  '@img/colour@1.1.0':
   '@img/colour@1.0.0':
     optional: true
 
@@ -2514,6 +2540,7 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
+  '@types/node@25.3.3':
   '@types/node@25.3.0':
     dependencies:
       undici-types: 7.18.2
@@ -2776,6 +2803,7 @@ snapshots:
 
   axe-core@4.11.1: {}
 
+  axios@1.13.6:
   axios@1.13.5:
     dependencies:
       follow-redirects: 1.15.11
@@ -2809,6 +2837,7 @@ snapshots:
     dependencies:
       balanced-match: 1.0.2
 
+  brace-expansion@5.0.4:
   brace-expansion@5.0.3:
     dependencies:
       balanced-match: 4.0.4
@@ -3072,6 +3101,7 @@ snapshots:
       is-date-object: 1.1.0
       is-symbol: 1.1.1
 
+  es-toolkit@1.45.0: {}
   es-toolkit@1.44.0: {}
 
   escalade@3.2.0: {}
@@ -3084,6 +3114,7 @@ snapshots:
       eslint: 10.0.2
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint@10.0.2))(eslint@10.0.2)
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@10.0.2)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint@10.0.2))(eslint@10.0.2))(eslint@10.0.2)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@10.0.2)
       eslint-plugin-react: 7.37.5(eslint@10.0.2)
@@ -3117,6 +3148,7 @@ snapshots:
       tinyglobby: 0.2.15
       unrs-resolver: 1.11.1
     optionalDependencies:
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@10.0.2)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint@10.0.2))(eslint@10.0.2))(eslint@10.0.2)
     transitivePeerDependencies:
       - supports-color
@@ -3132,6 +3164,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@10.0.2):
   eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.52.0(eslint@10.0.2)(typescript@5.9.3))(eslint@10.0.2))(eslint@10.0.2))(eslint@10.0.2):
     dependencies:
       '@rtsao/scc': 1.1.0
@@ -3255,6 +3288,7 @@ snapshots:
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       json-stable-stringify-without-jsonify: 1.0.1
+      minimatch: 10.2.4
       minimatch: 10.2.2
       natural-compare: 1.4.0
       optionator: 0.9.4
@@ -3639,6 +3673,9 @@ snapshots:
     dependencies:
       mime-db: 1.52.0
 
+  minimatch@10.2.4:
+    dependencies:
+      brace-expansion: 5.0.4
   minimatch@10.2.2:
     dependencies:
       brace-expansion: 5.0.3
@@ -3795,11 +3832,11 @@ snapshots:
     dependencies:
       react: 19.2.4
       scheduler: 0.27.0
-
+  react-hook-form@7.71.2(react@19.2.4):
+    dependencies:
   react-hook-form@7.71.2(react@19.2.4):
     dependencies:
       react: 19.2.4
-
   react-icon@1.0.0(babel-runtime@5.8.38)(react@19.2.4):
     dependencies:
       babel-runtime: 5.8.38
@@ -3836,6 +3873,7 @@ snapshots:
       '@reduxjs/toolkit': 2.11.2(react-redux@9.2.0(@types/react@19.2.8)(react@19.2.4)(redux@5.0.1))(react@19.2.4)
       clsx: 2.1.1
       decimal.js-light: 2.5.1
+      es-toolkit: 1.45.0
       es-toolkit: 1.44.0
       eventemitter3: 5.0.4
       immer: 10.2.0
@@ -3956,6 +3994,7 @@ snapshots:
 
   sharp@0.34.5:
     dependencies:
+      '@img/colour': 1.1.0
       '@img/colour': 1.0.0
       detect-libc: 2.1.2
       semver: 7.7.3
