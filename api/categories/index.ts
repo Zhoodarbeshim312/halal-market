@@ -16,9 +16,11 @@ const usePostCategory = () => {
   return useMutation<Category.resPostCategory, Error, Category.reqPostCategory>(
     {
       mutationFn: async (data) => {
-        const response = await api.post("/categories/", data, {
-          headers: { "Content-Type": "application/json" },
-        }); // просто JSON
+        const formData = new FormData();
+        formData.append("category_name", data.category_name);
+        formData.append("category_image", data.category_image); // ← передаём File объект
+
+        const response = await api.post("/categories/", formData);
         return response.data;
       },
       onSuccess: () => {

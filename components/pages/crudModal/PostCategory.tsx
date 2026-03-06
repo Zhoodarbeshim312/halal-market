@@ -1,28 +1,29 @@
 "use client";
-import { useState } from "react"; // 1. Добавляем useState
+import { useState } from "react";
 import { usePostCategory } from "@/api/categories";
 import scss from "./PostCategory.module.scss";
 
 const PostCategory = () => {
-  // 2. Создаем состояние для каждого поля (согласно твоему Request Body в Swagger)
   const [categoryName, setCategoryName] = useState("");
+  const [categoryImage, setCategoryImage] = useState<File | null>(null);
 
   const { mutate: postCategory, isPending } = usePostCategory();
 
-  // 3. Обычный обработчик отправки
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Предотвращаем перезагрузку страницы
+    e.preventDefault();
+    if (!categoryImage) return;
 
-    // Формируем объект данных точно так, как просит Swagger
     const data: Category.reqPostCategory = {
       category_name: categoryName,
+      category_image: categoryImage,
     };
 
     console.log("Отправка данных:", data);
 
     postCategory(data, {
       onSuccess: () => {
-        setCategoryName(""); // Очистка поля при успехе (аналог reset)
+        setCategoryName("");
+        setCategoryImage(null);
       },
     });
   };
@@ -32,21 +33,23 @@ const PostCategory = () => {
       <div className="container">
         <div className={scss.content}>
           <div className={scss.block}>
-            {/* 4. Привязываем стандартный onSubmit */}
             <form onSubmit={handleSubmit}>
-              
               <input
-                value={categoryName} // Привязка значения к стейту
-                onChange={(e) => setCategoryName(e.target.value)} // Обновление стейта при вводе
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
                 placeholder="Название категории"
                 type="text"
-                required // Стандартная валидация HTML5
+                required
               />
-
-              <button type="submit" disabled={isPending}>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setCategoryImage(e.target.files?.[0] || null)}
+                required
+              />
+              <button type="submit" disabled={isPending || !categoryImage}>
                 {isPending ? "Отправка..." : "Создать категорию"}
               </button>
-
             </form>
           </div>
         </div>

@@ -10,6 +10,7 @@ namespace Category {
   // POST /categories
   type reqPostCategory = {
     category_name: string;
+    category_image: File;
   };
   type resPostCategory = {
     id: number;
