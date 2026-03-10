@@ -11,6 +11,8 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import placeholder from "@/public/No-Image-Placeholder.png";
 const Products = () => {
   const { data } = useGetProduct();
+  console.log(data);
+
   const [readmore, setReadmore] = useState<number | null>(null);
   const [slideImg, setSlideImg] = useState<{ [key: number]: number }>({});
   const [liked, setLiked] = useState<number[]>([]);
@@ -67,31 +69,6 @@ const Products = () => {
                         <IoMdHeartEmpty />
                       )}
                     </button>
-                    {/* <div className={scss.imgBlock}>
-                      <button
-                        className={scss.row}
-                        onClick={() =>
-                          handleSlideImg(item.id, "prev", item.images.length)
-                        }
-                      >
-                        {"<"}
-                      </button>
-                      <Image
-                        src={item.images?.[currentImageIndex]?.product_image}
-                        alt={item.product_name}
-                        width={220}
-                        height={230}
-                        className={scss.image}
-                      />
-                      <button
-                        className={scss.row}
-                        onClick={() =>
-                          handleSlideImg(item.id, "next", item.images.length)
-                        }
-                      >
-                        {">"}
-                      </button>
-                    </div> */}
                     <div className={scss.imgBlock}>
                       {item.images &&
                       item.images[currentImageIndex]?.product_image ? (
@@ -110,7 +87,7 @@ const Products = () => {
                               <MdOutlineKeyboardArrowLeft />
                             </button>
                           )}
-                          <Image
+                          <img
                             src={item.images[currentImageIndex].product_image}
                             alt={item.product_name || "Product"}
                             width={220}
@@ -134,8 +111,8 @@ const Products = () => {
                           )}
                         </>
                       ) : (
-                        <Image
-                          src={placeholder}
+                        <img
+                          src={placeholder.src}
                           alt="Нет изображения"
                           width={220}
                           height={230}

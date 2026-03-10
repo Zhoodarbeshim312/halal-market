@@ -12,6 +12,8 @@ const PostModalProduct = () => {
   const [images, setImages] = useState<File[]>([]);
 
   const creatProduct = (formData: Product.ReqPostProduct) => {
+    console.log("IMAGES:", images);
+    console.log("FORM DATA:", formData);
     postProduct(
       { ...formData, images },
       {
