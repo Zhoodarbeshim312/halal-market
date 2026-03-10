@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable}`}>
+      <body className={`${openSans.variable}`} suppressHydrationWarning>
         <LayoutClient>{children}</LayoutClient>
       </body>
     </html>

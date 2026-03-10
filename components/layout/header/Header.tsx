@@ -8,13 +8,14 @@ import { useRouter } from "next/navigation";
 import { IoExitOutline } from "react-icons/io5";
 import { GrUserAdmin } from "react-icons/gr";
 import { useGetClients } from "@/api/clients";
+
 const Header: FC = () => {
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState("Все категории");
-  const [isLogged, setIsLogged] = useState(false);
-  const { data, isLoading } = useGetClients();
+  const [isLogged, setIsLogged] = useState<boolean | null>(null);
+  const { data } = useGetClients();
   const currentUser = data?.[0];
-  console.log(data);
+  const nav = useRouter();
 
   const categories = [
     "Все категории",
@@ -23,11 +24,12 @@ const Header: FC = () => {
     "Сладости",
     "Напитки",
   ];
-  const nav = useRouter();
+
   useEffect(() => {
     const token = localStorage.getItem("access_token");
     setIsLogged(!!token);
   }, []);
+
   return (
     <>
       <header className={scss.topHeader}>
@@ -35,8 +37,16 @@ const Header: FC = () => {
           <div className={scss.topInner}>
             <div className={scss.logo}>HALAL industry</div>
             <div className={scss.topActions}>
-              {!isLogged && (
+              {isLogged === null ? (
+                <div className={scss.authPlaceholder} />
+              ) : !isLogged ? (
                 <>
+                  <button
+                    onClick={() => nav.push("/seller")}
+                    className={scss.beSeller}
+                  >
+                    Стать продавцом
+                  </button>
                   <button
                     onClick={() => nav.push("/login")}
                     className={scss.login}
@@ -44,18 +54,12 @@ const Header: FC = () => {
                     Войти
                   </button>
                 </>
-              )}
-              {isLogged && (
+              ) : (
                 <>
                   {currentUser?.user_role === "seller" ? (
                     <div
                       onClick={() => nav.push("/seller_profile")}
-                      style={{
-                        cursor: "pointer",
-                        fontSize: "20px",
-                        color: "white",
-                        fontWeight: "500",
-                      }}
+                      className={scss.profileLink}
                     >
                       Мой профиль
                     </div>
@@ -69,8 +73,8 @@ const Header: FC = () => {
                   )}
                   {currentUser?.user_role === "admin" && (
                     <button
-                      onClick={() => nav.push("/admin")}
-                      className={scss.profile}
+                      onClick={() => nav.push("/desktop")}
+                      className={scss.adminBtn}
                     >
                       <GrUserAdmin />
                     </button>
@@ -79,7 +83,6 @@ const Header: FC = () => {
                     onClick={() => {
                       localStorage.removeItem("access_token");
                       localStorage.removeItem("refresh_token");
-                      setIsLogged(false);
                     }}
                     className={scss.logout}
                   >
@@ -91,6 +94,7 @@ const Header: FC = () => {
           </div>
         </div>
       </header>
+
       <header className={scss.bottomHeader}>
         <div className="container">
           <div className={scss.bottomInner}>
@@ -134,6 +138,7 @@ const Header: FC = () => {
           </div>
         </div>
       </header>
+
       <search className={scss.searchHeader}>
         <div className="container">
           <a>

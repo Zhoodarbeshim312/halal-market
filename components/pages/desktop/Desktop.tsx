@@ -2,17 +2,6 @@
 import Link from "next/link";
 import scss from "./Desktop.module.scss";
 import { HiOutlineSearch } from "react-icons/hi";
-import {
-  PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-} from "recharts";
 import { useRouter } from "next/navigation";
 import PostCategory from "../crudModal/PostCategory";
 import { useState } from "react";
@@ -118,12 +107,6 @@ const Desktop = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <PostSubCategory />
-            {/* <button
-              className={scss.close_btn}
-              onClick={() => SetOpenModal(false)}
-            >
-              Закрыть
-            </button> */}
           </div>
         </div>
       )}
