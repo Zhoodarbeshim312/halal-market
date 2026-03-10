@@ -35,7 +35,9 @@ const DetailsPage = () => {
               <div className={scss.card}>
                 <Image
                   className={scss.image}
-                  src={product?.images[0].product_image!}
+                  src={
+                    product?.images?.[0]?.product_image! || "/placeholder.png"
+                  }
                   alt="img"
                   width={450}
                   height={450}
@@ -61,7 +63,7 @@ const DetailsPage = () => {
                       <span>
                         {readmore
                           ? product?.ingredients
-                          : product?.ingredients.slice(0, 70) + "..."}
+                          : product?.ingredients?.slice(0, 70) + "..."}
                         <span
                           className={scss.more}
                           onClick={() => setReadmore(!readmore)}
@@ -76,7 +78,7 @@ const DetailsPage = () => {
                       <span>
                         {readmore1
                           ? product?.description
-                          : product?.description.slice(0, 70) + "..."}
+                          : product?.description?.slice(0, 70) + "..."}
                         <span
                           className={scss.more}
                           onClick={() => setReadmore1(!readmore1)}

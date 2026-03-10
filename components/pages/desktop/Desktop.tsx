@@ -16,6 +16,7 @@ import {
 import { useRouter } from "next/navigation";
 import PostCategory from "../crudModal/PostCategory";
 import { useState } from "react";
+import PostSubCategory from "../crudModal/PostSubCategory";
 
 const Desktop = () => {
   const route = useRouter();
@@ -29,6 +30,7 @@ const Desktop = () => {
     ],
   };
   const [openModal, SetOpenModal] = useState(false);
+  const [openSubModal, SetOpenSubModal] = useState(false);
   return (
     <div id={scss.Desktop}>
       <div className="container">
@@ -81,7 +83,9 @@ const Desktop = () => {
                 Добавить категорию
               </button>
 
-              <button>Добавить подкатегория</button>
+              <button onClick={() => SetOpenSubModal(!false)}>
+                Добавить подкатегория
+              </button>
               <button>Добавить продукт</button>
             </div>
           </div>
@@ -100,6 +104,26 @@ const Desktop = () => {
             >
               Закрыть
             </button>
+          </div>
+        </div>
+      )}
+      ,
+      {openSubModal && (
+        <div
+          className={scss.modal_overlay}
+          onClick={() => SetOpenSubModal(false)}
+        >
+          <div
+            className={scss.modal_content}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <PostSubCategory />
+            {/* <button
+              className={scss.close_btn}
+              onClick={() => SetOpenModal(false)}
+            >
+              Закрыть
+            </button> */}
           </div>
         </div>
       )}
