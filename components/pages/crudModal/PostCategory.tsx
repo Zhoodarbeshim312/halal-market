@@ -2,8 +2,10 @@
 import { useState } from "react";
 import { usePostCategory } from "@/api/categories";
 import scss from "./PostCategory.module.scss";
+import { useRouter } from "next/navigation";
 
 const PostCategory = () => {
+  const route = useRouter();
   const [categoryName, setCategoryName] = useState("");
   const [categoryImage, setCategoryImage] = useState<File | null>(null);
 
@@ -47,7 +49,11 @@ const PostCategory = () => {
                 onChange={(e) => setCategoryImage(e.target.files?.[0] || null)}
                 required
               />
-              <button type="submit" disabled={isPending || !categoryImage}>
+              <button
+                onClick={() => route.push(`/menu`)}
+                type="submit"
+                disabled={isPending || !categoryImage}
+              >
                 {isPending ? "Отправка..." : "Создать категорию"}
               </button>
             </form>
